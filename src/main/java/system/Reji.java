@@ -4,21 +4,21 @@ import java.util.Scanner;
 
 import customer.Member;
 import item.DVD;
+
 public class Reji {
 
 	private Scanner sc;
-	
+
 	// レジがもつ情報
 	DVD[] dvds = new DVD[100];
 	Member[] members = new Member[100];
-	
+
 	// レジが持つ機能
-	Return rn = new Return();
 
 	public Reji() {
 		startUp();
 	}
-	
+
 	public Reji(Scanner sc) {
 		this.sc = sc;
 	}
@@ -52,11 +52,11 @@ public class Reji {
 
 	private int sum = 0;
 	static int count = 0;
+	static boolean judge = false;
 
 	public void rental2(String dvdNo) {
 		// DVD検索
 		int price = 0;
-		boolean judge = false;
 		for (DVD d : dvds) {
 			if (dvdNo.equals(d.getNumber())) {
 				price = d.getPrice();
@@ -71,25 +71,22 @@ public class Reji {
 		System.out.println(price + "円");
 		System.out.println("現在の合計金額" + sum + "円");
 	}
-	
+
+	//合計金額表示
 	public void rental3() {
 		System.out.println(sum + "円");
 	}
 
-	public void return1(String dvddNo , String memberId) {
-		
+	//返却の時の処理
+	public void return1() {
+		if (judge) {
+			int overdue = 0;
+			System.out.println("何日遅れたのかを入力してください");
+			int dvdDays = sc.nextInt();
+			overdue = 220 * dvdDays * count;
+			System.out.println("延滞料金 " + overdue + "円");
+			judge = false;
+		}
 	}
-	
-	
-	public void return2() {
-		//DVD検索（貸出中をbooleanの ON OF を変える）
-		//DVD 状態 借りている人  延滞料金
-		int overdue = 0;
-		
-		System.out.println("何日遅れたのかを入力してください");
-		int dvdDays = sc.nextInt();
-		System.out.println(count);
-		overdue = 220 * dvdDays * count;
-		System.out.println("延滞料金 " + overdue + "円");
-	}
+
 }

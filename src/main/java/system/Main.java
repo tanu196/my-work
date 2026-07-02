@@ -39,7 +39,7 @@ public class Main {
 		//延滞料金発生するかどうかの判定と処理
 		
 		reji = new Reji(sc);
-		reji.return2();
+		reji.return1();
 		
 		
 		

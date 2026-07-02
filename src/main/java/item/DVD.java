@@ -5,7 +5,6 @@ public class DVD {
 	private String kind;
 	private String number;
 	private boolean judge;
-	private int dvdDays;
 	
 	public DVD() {
 	}
@@ -54,20 +53,7 @@ public class DVD {
 		}
 	}
 	
-	public int getdvdDays() {
-		if( kind == "新作") {
-			return 7;
-		}else if( kind == "準新作") {
-			return 10;
-		}else if( kind == "旧作") {
-			return 14;
-		}else {
-			return 0;
-		}
 		
-	}
-	
-	
 	
 	
 	public boolean getJudge() {
@@ -75,6 +61,14 @@ public class DVD {
 	}
 	
 	public void setJudga(boolean judge) {
+		this.judge = judge;
+	}
+	
+	public boolean getReturnJudge() {
+		return false;
+	}
+	
+	public void setReturnJudge(boolean judge) {
 		this.judge = judge;
 	}
 }
