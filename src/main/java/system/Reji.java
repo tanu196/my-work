@@ -37,24 +37,25 @@ public class Reji {
 	}
 
 	// レンタル処理
-	public void rental1(String memberNo, int point) {
-
-		// 会員検索 + ポイントの計算
-		String memberId = "";
+	public String rentalMemberSerch(String memberNo) {
+		// 会員検索
+		String name = "";
 		for (Member m : members) {
 			if (memberNo.equals(m.getCode())) {
-				memberId = m.getCode();
-				System.out.println(m.getName() + "様");
-				break;
+				name = m.getName();
+				return name;
 			}
 		}
+		return null;
 	}
+	//ここから下修正
 
+	
 	private int sum = 0;
 	static int count = 0;
 	static boolean judge = false;
 
-	public void rental2(String dvdNo) {
+	public int rentalDvdSerch(String dvdNo) {
 		// DVD検索
 		int price = 0;
 		for (DVD d : dvds) {
@@ -63,22 +64,19 @@ public class Reji {
 				sum += price;
 				judge = d.getJudge();
 				count++;
-				break;
+				return price;
 			}
 		}
-
-		System.out.println(count);
-		System.out.println(price + "円");
-		System.out.println("現在の合計金額" + sum + "円");
+		return price;
 	}
 
 	//合計金額表示
-	public void rental3() {
+	public void rentalTotalPrice() {
 		System.out.println(sum + "円");
 	}
 
 	//返却の時の処理
-	public void return1() {
+	public void returnProcess() {
 		if (judge) {
 			int overdue = 0;
 			System.out.println("何日遅れたのかを入力してください");
