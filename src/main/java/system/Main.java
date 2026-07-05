@@ -16,7 +16,7 @@ public class Main {
 	
 			String memberNo = sc.next();
 			reji.rentalMemberSerch(memberNo);
-			System.out.println(reji.rentalMemberSerch(memberNo) + "様");			
+			System.out.println(reji.rentalMemberSerch(memberNo) + "様");
 			System.out.println();
 			if(memberNo.equals("N")) {
 				System.out.println("会員登録を行ってください");
@@ -31,20 +31,21 @@ public class Main {
 			String input2 = sc.next();
 			reji.rentalDvdSerch(input2);
 			System.out.println(reji.rentalDvdSerch(input2) + "円");
+			reji.rentalTotalPrice(reji.rentalDvdSerch(input2));
 			System.out.println("商品はまだありますか？");
 			input2 = sc.next();
 			if( input2.equals("N") ) {
+				int sumPrice = 0;
 				System.out.print("合計金額:");
+				System.out.print(reji.rentalTotalPrice(sumPrice) + "円");
 				break;
 			}
-			
 		} while (true);  //例外処理
-		reji.rentalTotalPrice();
-		System.out.println();
+		
 		//延滞料金発生するかどうかの判定と処理
 		
-		reji = new Reji(sc);
-		reji.returnProcess();
+//		reji = new Reji(sc);
+//		reji.returnProcess();
 		
 		
 		

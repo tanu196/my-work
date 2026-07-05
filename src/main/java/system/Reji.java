@@ -51,7 +51,6 @@ public class Reji {
 	//ここから下修正
 
 	
-	private int sum = 0;
 	static int count = 0;
 	static boolean judge = false;
 
@@ -61,7 +60,6 @@ public class Reji {
 		for (DVD d : dvds) {
 			if (dvdNo.equals(d.getNumber())) {
 				price = d.getPrice();
-				sum += price;
 				judge = d.getJudge();
 				count++;
 				return price;
@@ -71,8 +69,10 @@ public class Reji {
 	}
 
 	//合計金額表示
-	public void rentalTotalPrice() {
-		System.out.println(sum + "円");
+	int sum;  //ローカル変数にしたい
+	public int rentalTotalPrice(int price) {
+		sum += price;
+		return sum;
 	}
 
 	//返却の時の処理
