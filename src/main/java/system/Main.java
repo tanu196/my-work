@@ -11,6 +11,7 @@ public class Main {
 		Reji reji = new Reji();
 		Scanner sc = new Scanner(System.in);
 		boolean find = false;
+		
 		do {
 			System.out.println("会員番号");
 	
@@ -30,6 +31,7 @@ public class Main {
 			
 			String input2 = sc.next();
 			reji.rentalDvdSerch(input2);
+			reji.rentalJudge(input2);  //借りたときtrueにする
 			System.out.println(reji.rentalDvdSerch(input2) + "円");
 			reji.rentalTotalPrice(reji.rentalDvdSerch(input2));
 			System.out.println("商品はまだありますか？");
@@ -38,14 +40,22 @@ public class Main {
 				int sumPrice = 0;
 				System.out.print("合計金額:");
 				System.out.print(reji.rentalTotalPrice(sumPrice) + "円");
+				System.out.println();
 				break;
 			}
 		} while (true);  //例外処理
 		
 		//延滞料金発生するかどうかの判定と処理
 		
-//		reji = new Reji(sc);
-//		reji.returnProcess();
+		do {
+			System.out.println("何日遅れたのかを入力してください");
+			int dvdDays = sc.nextInt();
+			System.out.println("延滞料金 " + reji.returnProcess(dvdDays) + "円");
+			break;
+		}while(true);
+		
+		
+		
 		
 		
 		
@@ -72,19 +82,20 @@ public class Main {
  * 
  * 
  * 	<クラス>
- *店員　レンタル　返却　ー＞レンタルメソッド　返却メソッド　
+ *レンタル　返却　ー＞レンタルメソッド　返却メソッド　
  *会員　会員の情報　ー＞情報の管理だけフィールド
  *DVD　DVDの情報　ー＞DVDの情報管理だけフィールド
  *レジ　繋ぐ係　ー＞順序を考えていく　DVDの情報を入れるー＞会員の情報を入れるー＞レンタルメソッドの情報を入れてレジクラスで出力する
  *ー＞返却メソッドの情報を入れてレジクラスで出力する
- *
+ *返却クラス
  *
  *
  * ＜フィールド＞
  * DVDのタイトル　新しさ　商品番号
  *会員ナンバー　会員名　ポイント
- * 店員のところに　新しさによって変わる値段　延滞料金　枚数　日数　
- * 新しさの項目がかぶっているので定員のところにgetter setterメソッドで持ってきて計算を担う
+ *店員のところに　新しさによって変わる値段　延滞料金　枚数　日数　
+ *新しさの項目がかぶっているので定員のところにgetter setterメソッドで持ってきて計算を担う
+ *
  *	<メソッド>
  *返却　レンタル　マニュアル　
  *
